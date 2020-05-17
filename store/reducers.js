@@ -34,10 +34,23 @@ const timerReducer = (state = initialTimerState, { type, payload }) => {
   }
 }
 
+const GITHUB_INITIAL_STATE = {
+  user: {},
+  err: {},
+  repocount: 0,
+  repolist: [],
+  repodetail: {}
+}
+// Github reducer 
+const githubReducer = (state = GITHUB_INITIAL_STATE, { type, payload }) => {
+  // TODO: typ check required
+  return Object.assign({},{...state},{...payload});
+}
 // COMBINED REDUCERS
 const reducers = {
   counter: counterReducer,
   timer: timerReducer,
+  github: githubReducer
 }
 
 export default combineReducers(reducers)

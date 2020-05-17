@@ -1,38 +1,36 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import Link from 'next/link'
-import { startClock, serverRenderClock } from '../actions'
-import Examples from '../components/examples'
+import { githubUser, repoCount } from '../store/actions'
+import GithubUser from '../components/GithubUser';
+import RepoCount from '../components/RepoCount';
+import Github from '../github';
+import { GITHUB_USER } from '../store/types';
 
 class Index extends PureComponent {
-  static getInitialProps({ store, req }) {
-    store.dispatch(serverRenderClock(!!req))
-
+  static async getInitialProps({ store, req }) {
+    // TODO: this logic can be imporved.
+    const resp = await Github.getGithubUser('vinaymavi');
+    store.dispatch({type:GITHUB_USER,payload:{user:resp.data}});
     return {}
   }
 
   componentDidMount() {
-    this.timer = this.props.startClock()
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timer)
+    this.props.repoCount('vinaymavi');
   }
 
   render() {
     return (
       <>
-        <Examples />
-        <Link href="/show-redux-state">
-          <a>Click to see current Redux State</a>
-        </Link>
+        <GithubUser></GithubUser>
+        <RepoCount></RepoCount>
       </>
     )
   }
 }
 
 const mapDispatchToProps = {
-  startClock,
+  repoCount,
 }
 
 export default connect(null, mapDispatchToProps)(Index)
