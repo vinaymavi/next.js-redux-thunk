@@ -1,0 +1,7 @@
+# Auto generated file
+ runtime: nodejs12
+ instance_class: F1
+ automatic_scaling:
+ 	min_instances: 1
+ 	max_instances: 1
+ 	max_concurrent_requests: 50
