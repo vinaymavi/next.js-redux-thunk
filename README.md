@@ -2,6 +2,8 @@
 
 ![Node.js CI](https://github.com/vinaymavi/next.js-redux-thunk/workflows/Node.js%20CI/badge.svg?branch=master)
 
+![Deploy to Google App Engine](https://github.com/vinaymavi/next.js-redux-thunk/workflows/Deploy%20to%20Google%20App%20Engine/badge.svg)
+
 This example shows how to integrate Redux and Redux Thunk in Next.js.
 
 Usually splitting your app state into `pages` feels natural but sometimes you'll want to have global state for your app. This is an example on how you can use redux that also works with Next.js's universal rendering approach.
