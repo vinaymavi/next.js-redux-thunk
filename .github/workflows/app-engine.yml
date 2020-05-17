@@ -31,8 +31,9 @@ jobs:
         uses: actions/setup-node@v1
       # Build 
       - name: Build 
-        run: npm install 
-        run: npm run build
+        run: |
+         npm install 
+         npm run build
       # Setup and configure gcloud CLI
       - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
